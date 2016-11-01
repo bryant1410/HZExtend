@@ -6,9 +6,14 @@
 //  Copyright © 2016年 xzh. All rights reserved.
 //
 
-#import "HZURLManageConfig.h"
+#import "HZURLManagerConfig.h"
+@interface HZURLManagerConfig ()
 
-@implementation HZURLManageConfig
+@property(nonatomic, copy) NSMutableDictionary *mutableURLRewriteConfig;
+
+@end
+
+@implementation HZURLManagerConfig
 singleton_m(Config)
 - (instancetype)init
 {
@@ -20,5 +25,17 @@ singleton_m(Config)
     return self;
 }
 
+- (NSDictionary *)URLRewriteConfig
+{
+    return self.mutableURLRewriteConfig;
+}
+
+- (NSMutableDictionary *)mutableURLRewriteConfig
+{
+    if (!_mutableURLRewriteConfig) {
+        _mutableURLRewriteConfig = [NSMutableDictionary dictionary];
+    }
+    return _mutableURLRewriteConfig;
+}
 
 @end

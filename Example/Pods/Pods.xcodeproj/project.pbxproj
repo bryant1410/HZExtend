@@ -273,7 +273,7 @@
 		8DC21DC962C8CADFB15BD6BAF9AADA98 /* KWBlockNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F2C5E4E2F94DD7EAD39B16D5B7138F /* KWBlockNode.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		8EA514F2F0741CDF8FEA767959AF6537 /* MJRefreshHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6A6A5547C85D6F1BD9D071346DF75A /* MJRefreshHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8EC297CE0443CD7D001258C6C2B9302A /* KWMessagePattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B16198027A2FFD3600B27442CB60D2D9 /* KWMessagePattern.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		8F0DFE468D7DEB8DD460FC7D6B4C45EF /* HZURLManageConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B4871CA8765A5CFC232572657C16E /* HZURLManageConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F0DFE468D7DEB8DD460FC7D6B4C45EF /* HZURLManagerConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B23B4871CA8765A5CFC232572657C16E /* HZURLManagerConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FD0B67D285B107A1CE37F2F4301CF24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E85D1285BC261D01BDC70C45CED6FC7 /* Foundation.framework */; };
 		9024A0C8999C3CC7757AF9F927E9F9FA /* UIView+HZExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 200DB2F04E9A3AE6A5B4CC3590CCB223 /* UIView+HZExtend.m */; };
 		911D1A12D818D3CDE53EEE988BB4EC20 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9493428F3FF7EC83E3C27BF46C1A669C /* CoreFoundation.framework */; };
@@ -487,7 +487,7 @@
 		FA8AE210221B3415BC6BFC5E0DE0CC0B /* HZRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3BD0BABF7CFFCB595270100884DF1 /* HZRefreshAutoFooter.m */; };
 		FBA06B1E47431FE28B78E4FFB4EB6385 /* UIImage+HZExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = E7563E6CBED6AE8464CB953DEF3DBADE /* UIImage+HZExtend.m */; };
 		FC69189D81138B2AC6EE656A01EA707B /* NSObject+MJClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 8723208ED38FDD15A7808F3F9CE84D19 /* NSObject+MJClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FC7D8CB072A069FFFB7E4238E48A24B1 /* HZURLManageConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 655DF71C7BD4EEA13E0AC86C2C586C7F /* HZURLManageConfig.m */; };
+		FC7D8CB072A069FFFB7E4238E48A24B1 /* HZURLManagerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 655DF71C7BD4EEA13E0AC86C2C586C7F /* HZURLManagerConfig.m */; };
 		FCAF64234EDC227EC8024F2B45293969 /* KWHaveValueMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = BEADF9C68D5247035B3C28DD47B01EEC /* KWHaveValueMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		FD0205FAF49E5D81E24215A2949B5ADC /* HZRefreshHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 49671C03153E4AA969142798FBA8FD31 /* HZRefreshHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD1755B140D3C29DC87986E48561F567 /* NSValue+KiwiAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B11F04959B82552107A1B4710AB384 /* NSValue+KiwiAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -871,7 +871,7 @@
 		636475BAFB6212E89E30A4D330C62106 /* TMCache-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TMCache-prefix.pch"; sourceTree = "<group>"; };
 		640B45AC54598C1F77CA0B0D557B1D51 /* Pods-HZExtend_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HZExtend_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6534182DBDCF664900CA796208BFD621 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
-		655DF71C7BD4EEA13E0AC86C2C586C7F /* HZURLManageConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HZURLManageConfig.m; sourceTree = "<group>"; };
+		655DF71C7BD4EEA13E0AC86C2C586C7F /* HZURLManagerConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HZURLManagerConfig.m; sourceTree = "<group>"; };
 		65BCE11F53581E5E13175FE6156373CD /* KWCountType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KWCountType.h; path = Classes/Core/KWCountType.h; sourceTree = "<group>"; };
 		65D22570BE67A3DB9B788EB0E294978C /* UIButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+WebCache.m"; path = "SDWebImage/UIButton+WebCache.m"; sourceTree = "<group>"; };
 		66EA2F86EDE0C8FF882343E6E079C24C /* MJRefreshFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshFooter.h; path = MJRefresh/Base/MJRefreshFooter.h; sourceTree = "<group>"; };
@@ -1037,7 +1037,7 @@
 		B16198027A2FFD3600B27442CB60D2D9 /* KWMessagePattern.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWMessagePattern.m; path = Classes/Core/KWMessagePattern.m; sourceTree = "<group>"; };
 		B1DD398A785A13DA30BFA6D88ABFE263 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		B1E3701596EEADF98FE13D766D31682F /* UIViewController+HZURLManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HZURLManager.m"; sourceTree = "<group>"; };
-		B23B4871CA8765A5CFC232572657C16E /* HZURLManageConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HZURLManageConfig.h; sourceTree = "<group>"; };
+		B23B4871CA8765A5CFC232572657C16E /* HZURLManagerConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HZURLManagerConfig.h; sourceTree = "<group>"; };
 		B2F8499A92B3066FFA5A8F882A0C6268 /* TMDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TMDiskCache.m; path = TMCache/TMDiskCache.m; sourceTree = "<group>"; };
 		B33C42CD14B8B8E5F6C32C86F936D171 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackGifFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
 		B3B798711DA2DBAA4D3E955A48DE861A /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
@@ -1357,8 +1357,8 @@
 				29438E475295844813BF9F0DC6AF2CB8 /* HZErrorViewController.m */,
 				D9B8F4E05074A6BA91E9076B0FC0EAB3 /* HZNavigationController.h */,
 				87AF4EEF40EA5C07FA1E7D4CB8340A36 /* HZNavigationController.m */,
-				B23B4871CA8765A5CFC232572657C16E /* HZURLManageConfig.h */,
-				655DF71C7BD4EEA13E0AC86C2C586C7F /* HZURLManageConfig.m */,
+				B23B4871CA8765A5CFC232572657C16E /* HZURLManagerConfig.h */,
+				655DF71C7BD4EEA13E0AC86C2C586C7F /* HZURLManagerConfig.m */,
 				254E29DF9D18E13CEF2756586687929D /* HZURLManager.h */,
 				07F3FF7BADC3742017916B4910218BA0 /* HZURLManager.m */,
 				B51894D8F0F9823C0CF80F406C325688 /* HZURLNavigation.h */,
@@ -2394,7 +2394,7 @@
 				C07A9B012A76D5EEFD6B940F7C09B3B5 /* HZSessionTask.h in Headers */,
 				34FF59D86A0286507B45731A76489307 /* HZSingleton.h in Headers */,
 				4B857F772DC095FB0962F2368E8CE8AA /* HZSystem.h in Headers */,
-				8F0DFE468D7DEB8DD460FC7D6B4C45EF /* HZURLManageConfig.h in Headers */,
+				8F0DFE468D7DEB8DD460FC7D6B4C45EF /* HZURLManagerConfig.h in Headers */,
 				492B365FD3DB69D1D6B0928D9C273D6F /* HZURLManager.h in Headers */,
 				00CA192D61FA644E55F69A0036AA4AA1 /* HZURLNavigation.h in Headers */,
 				BBD467D7412C2C11C4E2828AEB3FA36A /* HZViewController.h in Headers */,
@@ -3200,7 +3200,7 @@
 				698F7972F1EB3D0E7C22E8747EBD1ACE /* HZScrollView.m in Sources */,
 				23CDC8E7372B3DEEE0D44267E249F656 /* HZSessionTask.m in Sources */,
 				9433E7DF3FAF29EB25B1CEF23303B083 /* HZSystem.m in Sources */,
-				FC7D8CB072A069FFFB7E4238E48A24B1 /* HZURLManageConfig.m in Sources */,
+				FC7D8CB072A069FFFB7E4238E48A24B1 /* HZURLManagerConfig.m in Sources */,
 				3BA71BB5728B0A9C4284FD9226C8D9D8 /* HZURLManager.m in Sources */,
 				2069874F96D48BE7642DAD380A04678D /* HZURLNavigation.m in Sources */,
 				BE2CABA58FD66B752799C644363580DC /* HZViewController.m in Sources */,

@@ -11,22 +11,26 @@
 /**
  *  URLManager中的数据配置器
  */
-@interface HZURLManageConfig : NSObject
+@interface HZURLManagerConfig : NSObject
 singleton_h(Config)
-/**
- *  URL配置
- *  URL的Host->class即 URL的host:Class of UIViewController
- */
-@property(nonatomic, strong) NSDictionary *config;
 
-/**
- *  指定传入http等URL时应生成控制器的名称,最好能继承HZWebViewController
- */
+/** URL:Ctrl配置字典 */
+@property(nonatomic, strong) NSDictionary *URLCtrlConfig;
+
+/** URL重写配置表 */
+@property(nonatomic, copy, readonly) NSDictionary *URLRewriteConfig;
+
+/** http(s)URL对应的默认Ctrl,配置表无http(s)URL对应ctrl时默认会创建该Ctrl */
 @property(nonatomic, strong) NSString *classOfWebViewCtrl;
 
-/**
- *  使用URLManager跳转时，指定下bar是否隐藏,默认NO
- */
+/** 跳转时是否隐藏下bar,默认NO */
 @property(nonatomic, assign) BOOL hideBottomWhenPushed;
+
+/**
+ *	追加URL重写配置表
+ *
+ *	@param URLRewriteConfig  需要追加的URL重写配置表
+ */
+- (void)appendURLRewriteConfig:(NSDictionary *)URLRewriteConfig;
 
 @end

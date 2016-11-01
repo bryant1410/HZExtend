@@ -7,41 +7,46 @@
 //
 
 #import "UIViewController+HZURLManager.h"
+
 #import "NSURL+HZExtend.h"
 #import "NSObject+HZExtend.h"
 #import "NSString+HZExtend.h"
-#import "HZWebViewController.h"
+
+#import "HZURLManageConfig.h"
+
 #import <objc/runtime.h>
 
-static const char kOriginURL = '\0';
-static const char kQueryDic = '\1';
+static const char kCtrlURL = '\0';
+static const char kParamDic = '\1';
 @interface UIViewController ()
 
-@property(nonatomic, strong) NSString *originURL;
-@property(nonatomic, strong) NSDictionary *queryDic;
+@property(nonatomic, strong) NSString *ctrlURL;
+@property(nonatomic, strong) NSDictionary *paramDic;
 
 @end
 
 @implementation UIViewController (HZURLManager)
-#pragma mark 创建控制器
-/**
- *  根据URL创建对应的控制器
- *  目前只返回一个控制器,以后可能会扩展返回多个控制器
- */
-+ (NSArray *)viewControllersWithURL:(NSString *)urlstring queryDic:(NSDictionary *)queryDic
+
+#pragma mark - Public Method
++ (UIViewController *)viewControllerWithString:(NSString *)URLString
 {
-    NSString *scheme = urlstring.scheme;
+    return [self viewControllerWithString:URLString paramDic:nil];
+}
+
++ (UIViewController *)viewControllerWithString:(NSString *)URLString paramDic:(NSDictionary *)paramDic
+{
+    NSString *scheme = URLString.scheme;
     NSDictionary *config = [HZURLManageConfig sharedConfig].config;
-    if (!urlstring.isNoEmpty || !config.isNoEmpty) return nil;
+    if (!URLString.isNoEmpty || !config.isNoEmpty) return nil;
     
     /*******************根据schema创建控制器********************/
     UIViewController *viewCtrl = nil;
     if ([scheme isEqualToString:@"http"]||[scheme isEqualToString:@"https"]) {  //schema为http
         NSString *strWebCtrl = [HZURLManageConfig sharedConfig].classOfWebViewCtrl.isNoEmpty?[HZURLManageConfig sharedConfig].classOfWebViewCtrl:@"HZWebViewController";
         Class class = NSClassFromString(strWebCtrl);
-        viewCtrl = [[class alloc] initWithURL:[NSURL URLWithString:urlstring]];
+        viewCtrl = [[class alloc] initWithURL:[NSURL URLWithString:URLString]];
     }else { //shchema为自定义
-        NSString *strclass = [config objectForKey:urlstring.allPath];
+        NSString *strclass = [config objectForKey:URLString.allPath];
         NSString *errorInfo = nil;
         if(strclass.isNoEmpty) {
             Class class = NSClassFromString(strclass);
@@ -51,31 +56,33 @@ static const char kQueryDic = '\1';
                 errorInfo = [NSString stringWithFormat:@"404 :) ,%@并无注册",strclass];
             }
         }else {//无该URL
-            errorInfo = [NSString stringWithFormat:@"404 :) ,%@://%@并无注册",urlstring.scheme,urlstring.host];
+            errorInfo = [NSString stringWithFormat:@"404 :) ,%@://%@并无注册",URLString.scheme,URLString.host];
         }
         
-        #ifdef DEBUG  // 调试状态
+#ifdef DEBUG  // 调试状态
         viewCtrl = viewCtrl?:[self errorViewConrtollerWithInfo:errorInfo];
         
-        #else // 发布状态
-        #endif
+#else // 发布状态
+#endif
     }
     
     if (viewCtrl) {
         NSMutableDictionary *tmpDic = [NSMutableDictionary dictionary];
-        NSDictionary *urlQueryDic = urlstring.queryDic;
+        NSDictionary *urlQueryDic = URLString.queryDic;
         if (urlQueryDic.isNoEmpty) [tmpDic addEntriesFromDictionary:urlQueryDic];
-        if (queryDic.isNoEmpty) [tmpDic addEntriesFromDictionary:queryDic];
-        viewCtrl.queryDic = tmpDic;
-        viewCtrl.originURL = urlstring;
-        return @[viewCtrl];
+        if (paramDic.isNoEmpty) [tmpDic addEntriesFromDictionary:paramDic];
+        viewCtrl.paramDic = tmpDic;
+        viewCtrl.ctrlURL = URLString;
     }
-    return nil;
+    
+    return viewCtrl;
 }
 
+#pragma mark Private Method
 /**
  *  创建错误控制器
  */
+#ifdef DEBUG
 + (UIViewController *)errorViewConrtollerWithInfo:(NSString *)errorInfo
 {
     Class noCtrlClass = NSClassFromString(@"HZErrorViewController");
@@ -83,65 +90,39 @@ static const char kQueryDic = '\1';
     [viewCtrl setValue:errorInfo forKey:@"errorInfo"];
     return viewCtrl;
 }
-
-#pragma mark - Public Method
-+ (UIViewController *)viewControllerWithString:(NSString *)urlstring
-{
-    return [[self viewControllersWithURL:urlstring queryDic:nil] firstObject];
-}
-
-+ (UIViewController *)viewControllerWithString:(NSString *)urlstring queryDic:(NSDictionary *)query
-{
-    return [[self viewControllersWithURL:urlstring queryDic:query] firstObject];
-}
-
-//#pragma mark - Private
-//+ (NSArray *)allPaths:(NSURL *)URL
-//{
-//    if (!URL.absoluteString.isNoEmpty) return nil;
-//    
-//    if (URL.path.isNoEmpty) {
-//        NSArray *pathArray = [URL.pathComponents subarrayWithRange:NSMakeRange(1, URL.pathComponents.count-1)];
-//        NSString *host = URL.host;
-//        if (host.isNoEmpty) return [@[host] arrayByAddingObjectsFromArray:pathArray];
-//    }else {
-//        NSString *path = URL.host;
-//        if (path.isNoEmpty) return @[path];
-//        
-//    }
-//    
-//    return nil;
-//}
+#endif
 
 #pragma mark - Property
-- (NSString *)originURL
+- (void)setCtrlURL:(NSString *)ctrlURL
 {
-    return objc_getAssociatedObject(self, &kOriginURL);
-}
-
-- (void)setOriginURL:(NSString *)originURL
-{
-    NSString *url = objc_getAssociatedObject(self, &kOriginURL);
-    if (url != originURL) {
-        [self willChangeValueForKey:@"originURL"];
-        objc_setAssociatedObject(self, &kOriginURL, originURL, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        [self didChangeValueForKey:@"originURL"];
+    NSString *url = objc_getAssociatedObject(self, &kCtrlURL);
+    if (url != ctrlURL) {
+        [self willChangeValueForKey:@"ctrlURL"];
+        objc_setAssociatedObject(self, &kCtrlURL, ctrlURL, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [self didChangeValueForKey:@"ctrlURL"];
     }
+
 }
 
-- (NSDictionary *)queryDic
+- (NSString *)ctrlURL
 {
-    return objc_getAssociatedObject(self, &kQueryDic);
+    return objc_getAssociatedObject(self, &kCtrlURL);
 }
 
-- (void)setQueryDic:(NSDictionary *)queryDic
+- (void)setParamDic:(NSDictionary *)paramDic
 {
-    NSDictionary *dic = objc_getAssociatedObject(self, &kQueryDic);
-    if (dic != queryDic) {
-        [self willChangeValueForKey:@"queryDic"];
-        objc_setAssociatedObject(self, &kQueryDic, queryDic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        [self didChangeValueForKey:@"queryDic"];
+    NSDictionary *dic = objc_getAssociatedObject(self, &kParamDic);
+    if (dic != paramDic) {
+        [self willChangeValueForKey:@"paramDic"];
+        objc_setAssociatedObject(self, &kParamDic, paramDic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [self didChangeValueForKey:@"paramDic"];
     }
+    
+}
+
+- (NSDictionary *)paramDic
+{
+    return objc_getAssociatedObject(self, &kParamDic);
 }
 
 

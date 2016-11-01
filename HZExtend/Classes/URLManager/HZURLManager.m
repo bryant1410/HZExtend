@@ -24,9 +24,9 @@ singleton_m(Manager)
 
 
 #pragma mark - push
-+ (void)pushViewControllerWithString:(NSString *)urlstring animated:(BOOL)animated
++ (UIViewController *)pushViewControllerWithString:(NSString *)urlstring animated:(BOOL)animated
 {
-    if (!urlstring.isNoEmpty) return;
+    if (!urlstring.isNoEmpty) return nil;
     
     UIViewController *viewController = [UIViewController viewControllerWithString:urlstring];
     if (viewController)
